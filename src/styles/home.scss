@@ -1,0 +1,262 @@
+.home-page {
+	width: 100%;
+	height: 100dvh;
+	overflow: hidden;
+	padding: 20px;
+	background: rgb(248,168,18);
+	background: radial-gradient(circle, rgba(248,168,18,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 100%);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.home-page .home__header {
+	width: 100%;
+	height: 70px;
+	background: #1E1E1E;
+	border-radius: 15px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 2;
+}
+
+.home-page .home__header .header__profile {
+	max-width: 50%;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.home-page .home__header .header__profile .profile__icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.home-page .home__header .header__profile .profile__info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.home-page .home__header .header__profile .profile__info .info__name {
+	font-size: 16px;
+}
+
+.home-page .home__header .header__profile .profile__info .info__amount {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 15px;
+}
+
+.home-page .home__header .header__profile .profile__info .info__amount img {
+	width: 15px;
+	height: 15px;
+}
+
+.home-page .home__header .header__rank {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 15px;
+}
+
+.home-page .home__header .header__rank img {
+	width: 20px;
+}
+
+@media only screen and (max-width: 365px) {
+	.home-page .home__header .header__profile .profile__info .info__name {
+		font-size: 14px;
+	}
+	.home-page .home__header .header__profile .profile__info .info__amount {
+		font-size: 13px;
+	}
+	.home-page .home__header .header__profile .profile__info .info__amount img {
+		width: 10px;
+		height: 10px;
+	}
+	.home-page .home__header .header__rank {
+		font-size: 13px;
+	}
+}
+
+.home-page .home__footer {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.home-page .home__footer .footer__progress {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	z-index: 2;
+}
+
+.home-page .home__footer .footer__progress .progress--section {
+	height: 15px;
+	width: 100%;
+	border-radius: 15px;
+	background: #ffffff50;
+	overflow: hidden;
+}
+
+.home-page .home__footer .footer__progress .progress__info {
+	gap: 5px;
+	display: flex;
+	align-items: center;
+}
+
+.home-page .home__footer .footer__progress .progress__info img {
+	width: 25px;
+}
+
+.home-page .home__footer .footer__progress .progress--section .progress__bar {
+	height: 100%;
+	border-radius: 15px;
+	background: rgb(185,103,0);
+	background: linear-gradient(90deg, #FB9606 0%, rgba(253,237,201,1) 100%);
+}
+
+.home-page .home__footer .footer__navigation {
+	width: 100%;
+	height: 70px;
+	border-radius: 15px;
+  background-color: #F2B662;
+	display: flex;
+	align-items: center;
+	box-shadow: 0px 50px 400px 350px #E68420;
+}
+
+.home-page .home__footer .footer__navigation .navigation-item {
+	width: 25%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	align-items: center;
+	justify-content: center;
+}
+
+.home-page .home__footer .footer__navigation .navigation-tree {
+	width: 1px;
+	height: 40px;
+	background: #ffffff71;
+}
+
+.home-page .home__footer .footer__navigation .navigation-item img {
+	width: 30px;
+}
+
+.home-page .home__general {
+	width: 100%;
+	padding: 20px 0px;
+	z-index: 2;
+}
+
+.home-page .home__general .general__amount {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	font-size: clamp(24px, 9.5vw, 48px);
+	font-weight: 700;
+	width: 100%;
+	justify-content: center;
+}
+
+.home-page .home__general .general__amount img {
+	width: 30px;
+}
+
+.home-page .home__general .general__rank {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	margin-top: 10px;
+	align-items: center;
+}
+
+.home-page .home__general .general__rank img {
+	width: 25px;
+}
+
+.home-page .home__general .general__coin--block {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.home-page .home__general .general__coin--block .root {
+	margin: 0;
+}
+
+.home-page .home__general .general__coin {
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/d6/Gold_coin_icon.png");
+	width: 300px;
+	height: 300px;
+	border-radius: 100%;
+	background-position: center;
+	background-size: contain;
+}
+
+@media only screen and (min-width: 500px) {
+	.home-page .home__general .general__amount img {
+		width: 35px;
+	}
+}
+
+@media only screen and (max-width: 340px) {
+	.home-page .home__general .general__coin {
+		width: 250px;
+		height: 250px;
+	}
+}
+
+@media only screen and (max-height: 650px) and (min-width: 340px) {
+	.home-page .home__general .general__coin {
+		width: 250px;
+		height: 250px;
+	}
+}
+
+@media only screen and (max-height: 610px) {
+	.home-page .home__general .general__coin {
+		width: 200px;
+		height: 200px;
+	}
+	.home-page .home__general .general__coin--block {
+		margin-top: 10px;
+	}
+	.home-page .home__general .general__rank {
+		margin-top: 5px;
+	}
+}
+
+@media only screen and (max-height: 550px) {
+	.home-page .home__general .general__amount {
+		font-size: clamp(24px, 9.5vw, 42px);
+	}
+	.home-page .home__general {
+		padding: 5px 0px;
+	}
+}
+
+@media only screen and (max-height: 510px) {
+	.home-page .home__general .general__amount {
+		font-size: clamp(24px, 9.5vw, 36px);
+	}
+	.home-page .home__general .general__coin {
+		width: 170px;
+		height: 170px;
+	}
+}

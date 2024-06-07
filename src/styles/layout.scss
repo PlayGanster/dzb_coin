@@ -1,0 +1,16 @@
+.body--tg {
+	width: 100dvw;
+	height: 100dvh;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #000;
+}
+
+.tg--view {
+	width: 100%;
+	max-width: 500px;
+	height: 100dvh;
+	background: #fff;
+}
