@@ -2,17 +2,20 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type Coin = number
 type Energy = number
+type maxEnergy = number
 type InitData = any
 
 interface UserState {
 	coin: Coin,
 	energy: Energy,
+	maxEnergy: maxEnergy,
 	initData: InitData
 }
 
 const initialState: UserState = {
 	coin: 1000000,
 	energy: 9500,
+	maxEnergy: 9500,
 	initData: null
 }
 

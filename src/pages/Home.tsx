@@ -3,14 +3,11 @@ import CoinImg from '../assets/coin.webp'
 import { formatNumber } from '../other/formatNumber'
 import { Coin } from '../components/home/Coin'
 import { useAppSelector } from '../redux/store'
+import { Link } from 'react-router-dom'
 
 const tg = window.Telegram.WebApp
 
 const Home = () => {
-	function maxEnergy() {
-		const float:number = user.energy / 1000
-		return Math.ceil(float) * 1000
-	}
 	tg.BackButton.hide()
 	const user = useAppSelector(state=>state.user)
 	return (
@@ -47,15 +44,15 @@ const Home = () => {
 		<div className="home__footer">
 			<div className="footer__progress">
 				<p className="progress__info"><img src="https://emojikitchen.com/emoji/platform/joy-pixels/5-5/26a1.png" />{user.energy}</p><div className="progress--section"><div className="progress__bar" style={{
-					width: `${100 / maxEnergy() * user.energy }%`
+					width: `${100 / user.maxEnergy * user.energy }%`
 				}}></div>
 				</div>
 			</div>
 			<div className="footer__navigation">
-				<div className="navigation-item">
+				<Link to="/frens" className="navigation-item">
 					<img src="https://emojikitchen.com/emoji/platform/hua-wei/1-0/1f381.png" />
 					Frens
-				</div>
+				</Link>
 				<span className="navigation-tree"></span>
 				<div className="navigation-item">
 					<img src="https://emojikitchen.com/emoji/platform/hua-wei/1-0/1f381.png" />
