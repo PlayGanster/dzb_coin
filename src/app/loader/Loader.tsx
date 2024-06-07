@@ -19,8 +19,8 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 		if(tg.initDataUnsafe.user !== undefined && tg.initDataUnsafe.user !== null){
       dispatch(setInitData({data: tg.initDataUnsafe.user}))
 		}else {
-      dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
-			// dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
+      // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
+			dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
 		} 
 	}, [])
 
