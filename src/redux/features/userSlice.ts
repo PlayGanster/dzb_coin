@@ -13,9 +13,9 @@ interface UserState {
 }
 
 const initialState: UserState = {
-	coin: 1000000,
-	energy: 9500,
-	maxEnergy: 9500,
+	coin: 0,
+	energy: 0,
+	maxEnergy: 0,
 	initData: null
 }
 
