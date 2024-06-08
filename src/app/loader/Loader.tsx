@@ -34,6 +34,8 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 					dispatch(setCoin({data: response.data.amount}))
 					dispatch(setEnergy({data: response.data.energy}))
 				}
+			}).catch((response) => {
+			dispatch(addError({data: {error_code: 202, description: (<>{response.response.status}</>)}}))
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
