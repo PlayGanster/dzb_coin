@@ -19,7 +19,6 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
     tg.expand()
 		if(tg.initDataUnsafe.user !== undefined && tg.initDataUnsafe.user !== null){
       dispatch(setInitData({data: tg.initDataUnsafe.user}))
-			dispatch(addError({data: {error_code:202, description: `http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}`}}))
 			axios.get(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}`).then((response:any) => {
 				if(!response.data.id && tg.initDataUnsafe.user){ 
 						axios.post("http://178.208.94.95/api/gamers", {
