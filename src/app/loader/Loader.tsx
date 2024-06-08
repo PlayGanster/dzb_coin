@@ -35,7 +35,7 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 				}
 			}).catch((error:any) => {
 				if(tg.initDataUnsafe.user)
-				dispatch(addError({data: {error_code: 202, description: (<>Ошибка сервера{tg.initDataUnsafe.user.id}<br/>{error}</>)}}))
+				dispatch(addError({data: {error_code: 202, description: (<>Ошибка сервера{error}</>)}}))
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
