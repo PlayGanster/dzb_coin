@@ -26,8 +26,8 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 						amount: 0,
 						energy: 1000,
 						energy_hour: 1000
-					}).catch((response) => {
-						dispatch(addError({data: {error_code: 202, description: (<>{response.response.status}</>)}}))
+					}).catch(() => {
+						dispatch(addError({data: {error_code: 202, description: (<>2</>)}}))
 						})
 					dispatch(setCoin({data: 0}))
 					dispatch(setEnergy({data: 1000}))
@@ -35,8 +35,8 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 					dispatch(setCoin({data: response.data.amount}))
 					dispatch(setEnergy({data: response.data.energy}))
 				}
-			}).catch((response) => {
-			dispatch(addError({data: {error_code: 202, description: (<>{response.response.status}</>)}}))
+			}).catch(() => {
+				dispatch(addError({data: {error_code: 202, description: (<>1</>)}}))
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
