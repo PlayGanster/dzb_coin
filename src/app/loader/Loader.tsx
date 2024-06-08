@@ -22,25 +22,17 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 			axios.get(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}`).then((response:any) => {
 				if(!response.data.id && tg.initDataUnsafe.user){ 
 						axios.post("http://178.208.94.95/api/gamers", {
-						tg_id: tg.initDataUnsafe.user.id,
+						id_tg: tg.initDataUnsafe.user.id,
 						amount: 0,
 						energy: 1000,
 						energy_hour: 1000
-					}).catch(() => {
-						setTimeout(() => {
-							dispatch(addError({data: {error_code: 202, description: (<>2</>)}}))
-						}, 2800)
-						})
+					})
 					dispatch(setCoin({data: 0}))
 					dispatch(setEnergy({data: 1000}))
 				}else {
 					dispatch(setCoin({data: response.data.amount}))
 					dispatch(setEnergy({data: response.data.energy}))
 				}
-			}).catch(() => {
-				setTimeout(() => {
-					dispatch(addError({data: {error_code: 202, description: (<>1</>)}}))
-				}, 2800)
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
