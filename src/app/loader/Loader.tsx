@@ -27,7 +27,9 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 						energy: 1000,
 						energy_hour: 1000
 					}).catch(() => {
-						dispatch(addError({data: {error_code: 202, description: (<>2</>)}}))
+						setTimeout(() => {
+							dispatch(addError({data: {error_code: 202, description: (<>2</>)}}))
+						}, 2800)
 						})
 					dispatch(setCoin({data: 0}))
 					dispatch(setEnergy({data: 1000}))
@@ -36,11 +38,15 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 					dispatch(setEnergy({data: response.data.energy}))
 				}
 			}).catch(() => {
-				dispatch(addError({data: {error_code: 202, description: (<>1</>)}}))
+				setTimeout(() => {
+					dispatch(addError({data: {error_code: 202, description: (<>1</>)}}))
+				}, 2800)
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
-			dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
+			setTimeout(() => {
+				dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
+			}, 2800)
 		} 
 	}, [])
 
