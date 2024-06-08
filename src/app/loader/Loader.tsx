@@ -33,8 +33,9 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
 					dispatch(setCoin({data: response.data.amount}))
 					dispatch(setEnergy({data: response.data.energy}))
 				}
-			}).catch(() => {
-				dispatch(addError({data: {error_code: 202, description: (<>Ошибка сервера</>)}}))
+			}).catch((error:any) => {
+				if(tg.initDataUnsafe.user)
+				dispatch(addError({data: {error_code: 202, description: (<>Ошибка сервера{tg.initDataUnsafe.user.id}<br/>{error}</>)}}))
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
