@@ -5,6 +5,7 @@ import cn from 'classnames'
 import '../../styles/Coin.scss'
 import { useAppDispatch, useAppSelector } from '../../redux/store'
 import { setCoin, setEnergy } from '../../redux/features/userSlice'
+import axios from 'axios'
 
 interface NotcoinProps {
   canIClickPlease: boolean
@@ -69,6 +70,8 @@ const cooldownAppearence = {
   },
 }
 
+const tg = window.Telegram.WebApp
+
 export const Coin = ({
   canIClickPlease,
   sleep,
@@ -93,12 +96,16 @@ export const Coin = ({
   useEffect(() => {
     setTimeout(() => {
       setActive(true)
-    }, 1200);
+    }, 1300);
   }, [])
 
   const handleTouchStart = (event: any) => {
     if(active){
       if((user.energy - 5) >= 0) {
+      if(tg.initDataUnsafe.user){
+        axios.put(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}?func=amount&amount=${user.coin + 5}`)
+        axios.put(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}?func=energy&energy=${user.energy - 5}`)
+      }
       dispatch(setEnergy({data: user.energy - 5}))
       dispatch(setCoin({data: user.coin + 5}))
       handleClick();

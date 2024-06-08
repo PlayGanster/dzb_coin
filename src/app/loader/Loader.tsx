@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/store'
 import "../../styles/loader.scss"
 import Error from '../../components/Error'
-import { setInitData } from '../../redux/features/userSlice'
+import { setCoin, setEnergy, setInitData } from '../../redux/features/userSlice'
 import { addError } from '../../redux/features/settingsSlice'
+import axios from 'axios'
 
 const tg = window.Telegram.WebApp
 
@@ -18,6 +19,21 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
     tg.expand()
 		if(tg.initDataUnsafe.user !== undefined && tg.initDataUnsafe.user !== null){
       dispatch(setInitData({data: tg.initDataUnsafe.user}))
+			axios.get(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}`).then((response:any) => {
+				if(!response.data.id && tg.initDataUnsafe.user){ 
+						axios.post("http://178.208.94.95/api/gamers", {
+						tg_id: tg.initDataUnsafe.user.id,
+						amount: 0,
+						energy: 1000,
+						energy_hour: 1000
+					})
+					dispatch(setCoin({data: 0}))
+					dispatch(setEnergy({data: 1000}))
+				}else {
+					dispatch(setCoin({data: response.data.amount}))
+					dispatch(setEnergy({data: response.data.energy}))
+				}
+			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
 			dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
