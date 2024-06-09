@@ -103,8 +103,8 @@ export const Coin = ({
     if(active){
       if((user.energy - 5) >= 0) {
       if(tg.initDataUnsafe.user){
-        axios.put(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}?func=amount&amount=${user.coin + 5}`)
-        axios.put(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}?func=energy&energy=${user.energy - 5}`)
+        axios.put(`https://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}?func=amount&amount=${user.coin + 5}`)
+        axios.put(`https://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}?func=energy&energy=${user.energy - 5}`)
       }
       dispatch(setEnergy({data: user.energy - 5}))
       dispatch(setCoin({data: user.coin + 5}))

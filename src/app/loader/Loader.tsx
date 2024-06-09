@@ -9,7 +9,6 @@ import axios from 'axios'
 const tg = window.Telegram.WebApp
 
 const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
-	const user = useAppSelector(state=>state.user)
 	const settings = useAppSelector(state=>state.settings)
 	const [load, setLoad] = useState(false)
 	const dispatch = useAppDispatch()
@@ -19,32 +18,34 @@ const Loader = (props: {children:JSX.Element[] | JSX.Element | string}) => {
     tg.expand()
 		if(tg.initDataUnsafe.user !== undefined && tg.initDataUnsafe.user !== null){
       dispatch(setInitData({data: tg.initDataUnsafe.user}))
-			axios.get(`http://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}`).then((response:any) => {
+			axios.get(`https://178.208.94.95/api/gamers/${tg.initDataUnsafe.user.id}`).then((response:any) => {
 				if(!response.data.id && tg.initDataUnsafe.user){ 
-						axios.post("http://178.208.94.95/api/gamers", {
+						axios.post("https://178.208.94.95/api/gamers", {
 						id_tg: tg.initDataUnsafe.user.id,
 						amount: 0,
 						energy: 1000,
 						energy_hour: 1000
+					}).then((response:any) => {
+						if(response.data.id) {
+							dispatch(setCoin({data: 0}))
+							dispatch(setEnergy({data: 1000}))
+							setLoad(true)
+						}
 					})
-					dispatch(setCoin({data: 0}))
-					dispatch(setEnergy({data: 1000}))
 				}else {
 					dispatch(setCoin({data: response.data.amount}))
 					dispatch(setEnergy({data: response.data.energy}))
+					setLoad(true)
 				}
 			})
 		}else {
       // dispatch(setInitData({data: {first_name: "leader", last_name: ""}}))
-			setTimeout(() => {
-				dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
-			}, 2800)
+			axios.get(`https://178.208.94.95/api/gamers/6`).then((response:any) => {
+				console.log(response.data)
+			})
+			dispatch(addError({data: {error_code: 201, description: (<>Данное приложение подходит только для телеграмм.<br/> Приложение <a href="/">DZB COIN</a></>)}}))
 		} 
 	}, [])
-
-	useEffect(() => {
-		if(user.initData !== null) setTimeout(() => {setLoad(true)}, 2800)
-	}, [user.initData])
 
 	if(load !== true){
 		if(settings.error.length !== 0) return <Error />
